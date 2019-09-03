@@ -9,7 +9,7 @@ This is a Node Command Line Interface to manage collections created in Mongo Atl
 ## Main features
 Mongo Atlas Connect is a CLI developed in Node that can do the following tasks for you:
 1. Check a Mongo database connection.
-2. Create and update custom schemas remotely.
+2. Create and update custom validation schemas remotely.
 3. Generate the models for each schema you define.
 4. View current statistics of your Mongo database.
 5. Facilitate the tests of CRUD functionalities.
