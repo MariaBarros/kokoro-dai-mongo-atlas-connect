@@ -2,10 +2,9 @@
   "name": "kokoro-dai-mongo-atlas-connect",
   "version": "1.0.0",
   "description": "Command line interface to manage collections created in Mongo Atlas",
-  "main": "src/cli.js",
+  "main": "index.js",
   "scripts": {
-    "mongo-atlas-connect": "node src/cli.js",
-    "test": "node src/test.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "cli",
@@ -16,10 +15,18 @@
     "CRUD",
     "api"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MariaBarros/kokoro-dai-mongo-atlas-connect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MariaBarros/kokoro-dai-mongo-atlas-connect/issues"
+  },
+  "homepage": "https://github.com/MariaBarros/kokoro-dai-mongo-atlas-connect",
   "author": "Maria Barros",
   "license": "ISC",
   "bin": {
-    "mongo-atlas": "src/cli.js"
+    "mongo-atlas": "index.js"
   },
   "dependencies": {
     "mongodb": "^3.3.0"
