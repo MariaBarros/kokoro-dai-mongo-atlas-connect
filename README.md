@@ -19,6 +19,14 @@ Mongo Atlas Connect is a CLI developed in Node that can do the following tasks f
 ### Install MongoDB dependency:
 If you want to install this dependency locally, run `npm install mongodb`, otherwise run `npm install -g mongodb`.
 
-### Get connection information from Mongo Atlas
+### Get the MongoDB string connection from Mongo Atlas
 I you have not an account in Mongo Atlas, follow [this steps](https://docs.atlas.mongodb.com/getting-started/) for creating one.
-Once you have a Mongo Atlas account, [enter to your planel](https://cloud.mongodb.com/user#/atlas/login)
+
+Once you have a Mongo Atlas account, [enter to your planel](https://cloud.mongodb.com/user#/atlas/login), go to the **Clusters** section and click on **Connect** button. Next, select the Connection Method "Connect your Application", choose Node.js as Driver and select your version. Finally, copy your connection string.
+
+The connection string looks like this:
+
+`mongodb+srv://<username>:<password>@cluster0-417hl.mongodb.net/test?retryWrites=true&w=majority`
+
+### Create your configuration file
+Create a simple JSON file wherever you want in your project. For example, let's create a json file called connect.config.json in the src folder of your project.
