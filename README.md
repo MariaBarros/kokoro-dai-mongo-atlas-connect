@@ -56,7 +56,7 @@ To do this, create a simple JSON file wherever you want in your project, and com
 	},	
 	"database": "your_database_name",
 	"dest": "your_data_folder", // models and connection resources folder, e.g: src/server/data
-	"schemas": "your_schemas_folder" // folder where you define your custom validation schemas, e.g: src/server/schemas
+	"schemas": "your_schemas_folder" // your custom validation schemas folder, e.g: src/server/schemas
 }
 
 ````
