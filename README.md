@@ -66,7 +66,9 @@ To do this, create a simple JSON file wherever you want in your project, and com
 
 ### Add the CLI in your package.json
 In the section scripts of your project's package.json file, add: `mongo-atlas --config src/connect.config.json`.
-`mongo-atlas` is the command for init the CLI, `--config` is the flag to indicate the source of the config file you created above (here it is defined as src/connect.config.json, you have to replace it for yours).
+
+`mongo-atlas` is the command for init the CLI, 
+`--config` is the flag to indicate the source of the config file you created above (here it is defined as src/connect.config.json, you have to replace it for yours).
 
 Your package.json should look like this:
 
@@ -75,7 +77,8 @@ Your package.json should look like this:
   ...,
   "scripts": {
     ...,
-    "mongo-connect": "mongo-atlas --config src/connect.config.json", //replace 'src/connect.config.json' for your config file path
+    //replace 'src/connect.config.json' for your config file path
+    "mongo-connect": "mongo-atlas --config src/connect.config.json", 
     ...
   },...
 
