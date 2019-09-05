@@ -83,3 +83,7 @@ Your package.json should look like this:
   },...
 
 ````
+
+## Run de CLI
+
+``npm run mongo-connect``
