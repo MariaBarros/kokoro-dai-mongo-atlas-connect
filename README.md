@@ -37,14 +37,14 @@ The connection string should look like this:
 This CLI needs a config file that defines:
 
 - The server and cluster you have to connect (server and cluster properties in the file). For the above string connection, the server would be: `mongodb+srv://` and the cluster would be: `cluster0-417hl.mongodb.net`.
-- The authorized users to operate your database. One of these users has to have administrator permissions because of the CLI updates collections schemas remotely.
+- The authorized users to operate your database. One of these users has to have administrator permissions because of the CLI updates collections schemas remotely. You can get this information from the Database Access section in your Mongo Atlas panel.
 - Your database name.
 - The folder where the CLI will put the models and connection resources that it will generate automatically. (e.g: src/server/data).
 - The folder where you define your Mongo Database collections schemas. (e.g: src/server/schemas).
 
 To do this, create a simple JSON file wherever you want in your project, and complete the file like this:
 
-``
+````
 
 {	
 	"server": "your_server", //e.g:      mongodb+srv://
@@ -59,7 +59,7 @@ To do this, create a simple JSON file wherever you want in your project, and com
 	"schemas": "your_schemas_folder" // folder where you define your Mongo Database collections schemas, e.g: src/server/schemas
 }
 
-``
+````
 
 ### Install the CLI
 `npm install kokoro-dai-mongo-atlas-connect --save-dev`.
@@ -70,7 +70,7 @@ In the section scripts of your project's package.json file, add: `mongo-atlas --
 
 Your package.json should look like this:
 
-``
+````
 //package.json
   ...,
   "scripts": {
@@ -79,4 +79,4 @@ Your package.json should look like this:
     ...
   },...
 
-``
+````
