@@ -36,11 +36,11 @@ The connection string should look like this:
 ### Create your configuration file
 This CLI needs a config file that defines:
 
-- The server and cluster you have to connect (server and cluster properties in the file). For the above string connection, the server would be: `mongodb+srv://` and the cluster would be: `cluster0-417hl.mongodb.net`.
-- The authorized users to operate your database. One of these users has to have administrator permissions because of the CLI updates collections schemas remotely. You can get this information from the Database Access section in your Mongo Atlas panel.
-- Your database name.
-- The folder where the CLI will put the models and connection resources that it will generate automatically. (e.g: src/server/data).
-- The folder where you define your Mongo Database collections schemas. (e.g: src/server/schemas).
+- The **server** and **cluster** you have to connect (``server`` and ``cluster`` properties in the file). For the above string connection, the ``server`` would be: `mongodb+srv://` and the ``cluster would be``: `cluster0-417hl.mongodb.net`.
+- The authorized **users** to operate your database. One of these users has to have administrator permissions because of the CLI updates collections schemas remotely. You can get this information from the Database Access section in your Mongo Atlas panel.
+- Your **database** name (``database`` property in the file).
+- The folder in your project where the CLI will put the **models** and **connection resources** that it will generate automatically. (``dest`` property in the file).
+- The folder in your project where you define your custom validation schemas. (``schemas`` property in the file).
 
 To do this, create a simple JSON file wherever you want in your project, and complete the file like this:
 
@@ -55,8 +55,8 @@ To do this, create a simple JSON file wherever you want in your project, and com
 		"admin": {"name": "your_admin_user", "password": "your_admin_user_password"}
 	},	
 	"database": "your_database_name",
-	"dest": "your_data_folder", // folder where the CLI will put the models and connection resources, e.g: src/server/data
-	"schemas": "your_schemas_folder" // folder where you define your Mongo Database collections schemas, e.g: src/server/schemas
+	"dest": "your_data_folder", // models and connection resources folder, e.g: src/server/data
+	"schemas": "your_schemas_folder" // folder where you define your custom validation schemas, e.g: src/server/schemas
 }
 
 ````
