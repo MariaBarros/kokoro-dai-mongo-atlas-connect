@@ -92,29 +92,29 @@ The interface will prompt you to type a command.
 
 The first time you use this CLI, you shall want to see its available commands. If so, type help, and you'll get the following list:
 
-- `connect`: connects to a database provider and tests the connection.
-- `collections`: gets the collections list of a given database. This command has a flag defined as **--schemas**. When you run `collections --schemas`, the CLI updates validations schemas remotely, taking the custom schemas defined locally.
+- `connect`: connect to a database provider and tests the connection.
+- `collections`: get the collections list of a given database. This command has a flag defined as **--schemas**.  `collections --schemas` command updates validations schemas remotely, from the custom schemas defined locally.
 - `generate`: generates files needed for making transactions with the database. This command has two flags:
-	1. **--factory**: If you run `generate --factory`, the CLI generates the main transaction resources: the **MongoConnectFactory.js**, the **MongoTrasactionFactory.js**, and the **MongoConfigFactory.js** files. The first one manages the connection with the database, the second one defines the most common CRUD operations, and the last one stores the string database connection for different environments.
-	2. **--models**: If you run `generate --models`, the CLI generates the models based on the validation schemas defined for the database in the folder you specify previously in the config file.
-- `g`: this is an alias for the `generate` command. So, you can type `generate --factory` or `g -factory` / `generate --models` or `g --models`.
-- `stats`: gets statistics on the underlying operating system and resources utilization. This command has the flag **--db**. If you run `stats --db`, the CLI gets statistics data from the database defined in the config file previously.
-- `help`: shows the CLI's available commands.
-- `exit`: kills the CLI.
+    1. **--factory**: `generate --factory` command generates the main resources to make transactions with your database.
+    2. **--models**: `generate --models` command generates the models based on the validation schemas defined for the database in the folder you specified previously in the config file.
+- `g`: is an alias for the `generate` command. So, you can type `generate --factory` or `g --factory` / `generate --models` or `g --models`.
+- `stats`: get statistics on the underlying operating system and resources utilization. This command has the flag **--db**. `stats --db` command gets statistics data from the database defined in the config file previously.
+- `help`: show the CLI's available commands.
+- `exit`: kill the CLI.
 
 #### Resume of the CLI's commands:
 | Command     | Flag        | Description                                              |
 | ------------|-------------|----------------------------------------------------------|
-| connect     |             | connects to a database provider and tests the connection.|
+| connect     |             | connect to a database provider and tests the connection.|
 | collections |             | gets the collections list of a given database.           |
-|             | --schemas   | updates validations schemas remotely from the custom schemas defined locally.|
-| generate    | --factory   | generates the main transaction resources.|
-|             | --models    | generates the models based on the validation schemas defined for the database.| 
+|             | --schemas   | update validations schemas remotely from the custom schemas defined locally.|
+| generate    | --factory   | generate the main transaction resources.|
+|             | --models    | generate the models based on the validation schemas defined for the database.| 
 | g           |             | alias for the **generate** command.                      |
-| stats       |             | gets statistics on the underlying operating system and resources utilization.
-|             | --db        | gets statistics data from the database defined in the config file.|
-| help        |             | shows the CLI's available commands.|
-| exit        |             | kills the CLI.|
+| stats       |             | get statistics on the underlying operating system and resources utilization.
+|             | --db        | get statistics data from the database defined in the config file.|
+| help        |             | show the CLI's available commands.|
+| exit        |             | kill the CLI.|
 
 
 
@@ -124,7 +124,7 @@ Type `connect` in the CLI.
 If the database connection is successful, the CLI will show the message **Successful connection**; otherwise, the CLI will show an error.
 
 ### Getting Collections List
-Type `collections` in the CLI.
+Run the CLI and type `collections`.
 
 The CLI will check the available collections in the database, and it will show them in a list.
 
@@ -163,4 +163,34 @@ role.json
 
 Make sure that this file is in the directory defined in your config file previously (`schemas` property).
 
-Once you defined the validators schemas, init the CLI and type `collections --schemas`. The CLI will create or update these schemas remotely.
+Once you defined the validators schemas, run the CLI and type `collections --schemas`. The CLI will create or update these schemas remotely.
+
+### Generating transaction resources
+
+Run the CLI and type `generate --factory`.
+
+When you run this command, three files are generated to make transactions in your database: 
+1. MongoConnectFactory.js: this file manages the connection with the database. 
+2. MongoTrasactionFactory.js: this file defines the most common CRUD operations. 
+3. MongoConfigFactory.js: this file stores the string database connection for different environments. 
+
+The CLI saves these files in the directory that you have declared in your config file previously (`dest` property).
+
+### Generating models
+
+Run the CLI and type `generate --models`.
+
+Once you run this command, the CLI generates the models based on the validation schemas you have defined.
+
+Following the validation schema of our example above, its model generated will be:
+
+````
+
+````
+
+#### Extending models functionalities
+
+
+### Getting database stats
+
+Run the CLI and type `stats --db`.

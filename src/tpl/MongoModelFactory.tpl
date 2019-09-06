@@ -2,23 +2,17 @@ const Connection = require('./MongoConnectFactory');
 
 const MongoTransaction = require('./MongoTransactionFactory');
 
-let collection = null;
-
 let $modelNameTransaction = null;
-
-class __transaction extends MongoTransaction{};
 
 const connectCollection = async (collectionName) => {
 
-	if((collection === null)){
+	if(($modelNameTransaction === null)){
 
-		collection = await Connection.getCollection(collectionName);		
+		const collection = await Connection.getCollection(collectionName);		
 
-		$modelNameTransaction = new __transaction(collection);
+		$modelNameTransaction = new MongoTransaction(collection);
 
-	}
-
-	return collection;	
+	}	
         
 }
 
