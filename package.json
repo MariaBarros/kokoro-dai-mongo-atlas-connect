@@ -1,6 +1,6 @@
 {
   "name": "kokoro-dai-mongo-atlas-connect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command line interface to manage collections created in Mongo Atlas",
   "main": "index.js",
   "scripts": {

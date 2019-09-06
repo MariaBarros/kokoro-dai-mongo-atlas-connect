@@ -68,7 +68,7 @@ To do this, create a simple JSON file wherever you want in your project, and com
 In the section scripts of your project's package.json file, add: `mongo-atlas --config src/connect.config.json`.
 
 `mongo-atlas` is the command for init the CLI, 
-`--config` is the flag to indicate the source of the config file you created above (here it is defined as src/connect.config.json, you have to replace it for yours).
+`--config` is the flag to indicate the source of the config file you created above (here it is defined as src/connect.config.json, but you have to replace it for yours).
 
 Your package.json should look like this:
 
@@ -87,3 +87,17 @@ Your package.json should look like this:
 ## Run de CLI
 
 ``npm run mongo-connect``
+
+The interface will prompt you to type a command.
+
+The first time you use this CLI, you shall want to see its available commands. If so, type help, and you'll get the following list:
+
+- connect: connects to a database provider and tests the connection.
+- collections: gets the collections list of a given database. This command has a flag defined as --schemas. When you run collections --schemas, the CLI updates validations schemas remotely, taking the custom schemas defined locally.
+generate: generates files needed for making transactions with the database. This command has two flags:
+	1. --factory: If you run generate --factory, the CLI generates the main transaction resources: MongoConnectFactory.js, MongoTrasactionFactory.js, and MongoConfigFactory.js. The first one manages the connection with the database, the second one defines the most common CRUD operations, and the last one stores the string database connection for different environments.
+	2. --models: If you run generate --models, the CLI generates the models of each collection automatically in the folder you specify in the config file previously.
+- g: this is an alias for the generate command. So, you can type generate --factory or g -factory / generate --models or g --models.
+- stats: gets statistics on the underlying operating system and resources utilization. This command has the flag --db. If you run stats --db, the CLI gets statistics data from the database defined in the config file previously.
+- help: show the CLI's available commands.
+- exit: kills the CLI.
