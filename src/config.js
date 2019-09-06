@@ -8,13 +8,13 @@ const commands = {
 
   'collections': {
 
-    main: 'Get the collections of a given database',
+    main: 'Get the collections list of a given database',
 
     commands: [
       {
         command: "--schemas", 
 
-        description: "Update schemas in a local or remote database from schemas defined locally"
+        description: "Update validations schemas remotely from schemas defined locally"
 
       }
     ]
@@ -22,18 +22,18 @@ const commands = {
 
   'generate': {
 
-    main: 'Generate MongoConfig file for making transactions with the database',
+    main: 'Generate main resources for making transactions with the database',
 
     commands: [
       {
         command: "--factory",
 
-        description: "Generate MongoConfig file for making transactions with the database"
+        description: "Generate connection and transactions resources"
       },
       {
         command: "--models",
 
-        description: "Generate models"
+        description: "Generate models based on the validations schemas defined"
 
       }
     ]
