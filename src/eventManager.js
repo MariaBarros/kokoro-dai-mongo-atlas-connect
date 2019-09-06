@@ -26,7 +26,7 @@ e.on('connect', async (options, args, callback) => {
 
     client.close();
 
-    console.log(helpers.green, `\n\tSucceful connection\n`);
+    console.log(helpers.green, `\n\tSuccessful connection\n`);
 
   }  
 

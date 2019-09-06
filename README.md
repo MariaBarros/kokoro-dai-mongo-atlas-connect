@@ -84,7 +84,7 @@ Your package.json should look like this:
 
 ````
 
-## Run de CLI
+## Running de CLI
 
 ``npm run mongo-connect``
 
@@ -99,5 +99,68 @@ The first time you use this CLI, you shall want to see its available commands. I
 	2. **--models**: If you run `generate --models`, the CLI generates the models based on the validation schemas defined for the database in the folder you specify previously in the config file.
 - `g`: this is an alias for the `generate` command. So, you can type `generate --factory` or `g -factory` / `generate --models` or `g --models`.
 - `stats`: gets statistics on the underlying operating system and resources utilization. This command has the flag **--db**. If you run `stats --db`, the CLI gets statistics data from the database defined in the config file previously.
-- `help`: show the CLI's available commands.
+- `help`: shows the CLI's available commands.
 - `exit`: kills the CLI.
+
+#### Resume of the CLI's commands:
+| Command     | Flag        | Description                                              |
+| ------------|-------------|----------------------------------------------------------|
+| connect     |             | connects to a database provider and tests the connection.|
+| collections |             | gets the collections list of a given database.           |
+|             | --schemas   | updates validations schemas remotely from the custom schemas defined locally.|
+| generate    | --factory   | generates the main transaction resources.|
+|             | --models    | generates the models based on the validation schemas defined for the database.| 
+| g           |             | alias for the **generate** command.                      |
+| stats       |             | gets statistics on the underlying operating system and resources utilization.
+|             | --db        | gets statistics data from the database defined in the config file.|
+| help        |             | shows the CLI's available commands.|
+| exit        |             | kills the CLI.|
+
+
+
+### Testing the database connection
+Type `connect` in the CLI.
+
+If the database connection is successful, the CLI will show the message **Successful connection**; otherwise, the CLI will show an error.
+
+### Getting Collections List
+Type `collections` in the CLI.
+
+The CLI will check the available collections in the database, and it will show them in a list.
+
+### Updating Validations Schemas
+If you have defined custom validations schemas for your database, you can update them remotely. If you did not use validation schemas before, [check this link](https://docs.mongodb.com/manual/core/schema-validation/).
+
+As an example, let's create a validation schema for a simple collection called role:
+
+````
+
+role.json
+
+{
+   "validator": { 
+      "$jsonSchema": {
+         "bsonType": "object",
+         "required": [ "role" ],
+         "properties": {
+            "role": {
+               "bsonType": "string",
+               "description": "must be a string and is required"
+            },            
+            "code": {
+               "bsonType": "string",
+               "description": "must be a string"
+            }
+         }
+      } 
+   },
+   "validationLevel": "strict",
+   "validationAction": "error"
+
+}
+
+````
+
+Make sure that this file is in the directory defined in your config file previously (`schemas` property).
+
+Once you defined the validators schemas, init the CLI and type `collections --schemas`. The CLI will create or update these schemas remotely.
