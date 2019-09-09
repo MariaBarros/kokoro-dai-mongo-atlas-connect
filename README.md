@@ -219,7 +219,7 @@ module.exports = roleModel;
 
 ````
 
-#### Using generated models
+## How to use the generated models
 ````
 const RoleModel = require('../data/RoleModel'); //url to your model
 
@@ -233,7 +233,7 @@ const count = await __roleModel.count();
 
 ````
 
-#### Extending models functionalities
+### Extending models functionalities
 Each model the CLI generates has the following functions:
 - findOne(criteria[, options]).
 - find(criteria[, options]).
