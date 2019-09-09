@@ -187,8 +187,6 @@ Following the validation schema of our example above, its model generated will b
 ````
 //RoleModel
 
-const Connection = require('./MongoConnectFactory');
-
 const MongoTransaction = require('./MongoTransactionFactory');
 
 let roleTransaction = null;
@@ -197,9 +195,9 @@ const connectCollection = async (collectionName) => {
 
 	if((roleTransaction === null)){
 
-		const collection = await Connection.getCollection(collectionName);		
+		roleTransaction = new MongoTransaction(collectionName);
 
-		roleTransaction = new MongoTransaction(collection);
+		await roleTransaction.setCollection();
 
 	}
         
