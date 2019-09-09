@@ -6,7 +6,7 @@ const connectCollection = async (collectionName) => {
 
 	if(($modelNameTransaction === null)){		
 
-		$modelNameTransaction = new MongoTransaction(collection);
+		$modelNameTransaction = new MongoTransaction(collectionName);
 
 		await $modelNameTransaction.setCollection();
 
