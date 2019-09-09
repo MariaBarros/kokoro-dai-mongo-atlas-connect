@@ -185,11 +185,90 @@ Once you run this command, the CLI generates the models based on the validation 
 Following the validation schema of our example above, its model generated will be:
 
 ````
+//RoleModel
+
+const Connection = require('./MongoConnectFactory');
+
+const MongoTransaction = require('./MongoTransactionFactory');
+
+let roleTransaction = null;
+
+const connectCollection = async (collectionName) => {
+
+	if((roleTransaction === null)){
+
+		const collection = await Connection.getCollection(collectionName);		
+
+		roleTransaction = new MongoTransaction(collection);
+
+	}
+        
+}
+
+let roleModel = async () =>{
+
+	await connectCollection('role'); 	
+
+	return roleTransaction;
+
+};
+
+
+// Export Model
+module.exports = roleModel;
+
+````
+
+#### Using generated models
+````
+const RoleModel = require('../data/RoleModel'); //url to your model
+
+const __roleModel = await RoleModel();  
+
+//Insert a new role
+await __roleModel.insert({role: "user", code: "USR"});
+
+//Count roles in the collection
+const count = await __roleModel.count();
 
 ````
 
 #### Extending models functionalities
+Each model the CLI generates has the following functions:
+- findOne(criteria[, options]).
+- find(criteria[, options]).
+- insert(data[, options]).
+- update(criteria, data[, options]).
+- remove(data[, options]).
+- findAndModify(criteria, newValues).
+- findAndDelete(criteria).
+- count(filter).
+- distinct(criteria[, filter]).
 
+If you want to add other functionalities to the model, you can modify it like this:
+````
+//RoleModel
+
+...
+
+let roleModel = async () =>{
+
+	await connectCollection('role'); 
+
+	//Extend roleTransaction functionalities
+	roleTransaction.updateCustomerCode = async (newCode) => {
+		roleTransaction.collection.updateOne({code: "CUS"}, {$set: newCode}, {w: 1});
+	}	
+
+	return roleTransaction;
+
+};
+
+
+// Export Model
+module.exports = roleModel;
+
+````
 
 ### Getting database stats
 

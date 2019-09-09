@@ -2,9 +2,9 @@ const Connection = require('./MongoConnectFactory');
 
 class MongoTransaction{	
 
-	constructor(collection){
+	constructor(collectionName){
 
-		this.collection = collection;
+		this.collectionName = collectionName;
 
 	}
 
@@ -13,6 +13,13 @@ class MongoTransaction{
 		return Object.assign(defaultOptions, options); 	
 		
 	}
+
+	async setCollection(){
+
+		this.collection = await Connection.getCollection(this.collectionName);
+
+	}
+
 
 	async findOne (criteria, options = {}) {
 		
